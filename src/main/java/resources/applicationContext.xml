@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--创建bean 对象-->
+    <!--
+    id 相当于创建对象的名称
+    class： 类的包路径
+    含义： spring 会实例化 xxx.Student实例化 Student 对象，叫做 myStudent
+    -->
+    <bean id="myStudent" class="com.sunzhiyong.domain.Student" scope="singleton"></bean>
+</beans>
