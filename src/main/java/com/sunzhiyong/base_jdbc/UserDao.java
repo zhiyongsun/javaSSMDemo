@@ -1,6 +1,9 @@
 package com.sunzhiyong.base_jdbc;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 public class UserDao {
 
@@ -20,7 +23,19 @@ public class UserDao {
         System.out.println(result);
     }
 
-    public void delete() {
+    public void delete(int userId) {
+        String sql = "DELETE FROM springuser WHERE id=?";
+        int result = jdbcTemplate.update(sql, new Object[]{userId});
+        if (result > 0) {
+            System.out.println("删除成功");
+        } else {
+            System.out.println("删除失败");
+        }
+    }
 
+    public List<User> getAllUser() {
+        String sql = "SELECT * FROM springuser";
+        List<User> lu = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class));
+        return  lu;
     }
 }
