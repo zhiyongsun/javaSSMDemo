@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--创建bean 对象-->
     <!--
     id 相当于创建对象的名称
     class： 类的包路径
     含义： spring 会实例化 xxx.Student实例化 Student 对象，叫做 myStudent
     -->
-    <bean id="myStudent" class="com.sunzhiyong.domain.Student" scope="singleton"></bean>
+    <!--<bean id="myStudent" class="com.sunzhiyong.domain.Student" scope="singleton"></bean>-->
+
+    <!--利用 setter方法实现数据注入-->
+    <!--<bean id="myTeacher" class="com.sunzhiyong.base_ioc.Teacher" autowire="byType">-->
+        <!--<property name="name" value="张老师"></property>-->
+        <!--<property name="address" value="安徽六安"></property>-->
+        <!--<property name="phone" value="1388329942"></property>-->
+        <!--<property name="schools">-->
+            <!--<list>-->
+                <!--<value>小学</value>-->
+                <!--<value>中学</value>-->
+                <!--<value>高中</value>-->
+                <!--<value>大学</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;配置合作者，bean 注入&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="dog" ref="myDog"></property>&ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--利用构造器实现数据注入-->
+    <!--<bean id="cat" class="com.sunzhiyong.base_ioc.Dog">-->
+        <!--&lt;!&ndash;隐形赋值&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg index="0" value="京巴"></constructor-arg>&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg index="1" value="5"></constructor-arg>&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg index="2" value="灰色"></constructor-arg>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;显性赋值&ndash;&gt;-->
+        <!--<constructor-arg name="name" value="京s巴"></constructor-arg>-->
+        <!--<constructor-arg name="age" value="5"></constructor-arg>-->
+        <!--<constructor-arg name="color" value="灰色"></constructor-arg>-->
+    <!--</bean>-->
+
+    <!--开发注解配置，自动扫描带有注解的类进行 Sping 容器接管，从而实现 DI-->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.sunzhiyong.base_ioc"/>
 </beans>
