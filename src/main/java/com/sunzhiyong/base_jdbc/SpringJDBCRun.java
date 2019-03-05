@@ -15,5 +15,4 @@ public class SpringJDBCRun {
 //        ud.delete(4);
         System.out.println(ud.getAllUser());
     }
-
 }

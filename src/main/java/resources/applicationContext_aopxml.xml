@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+">
+    <!--注册目标对象-->
+    <bean id="userDao" class="com.sunzhiyong.base_aop_xml.UserDao"/>
+    <bean id="orderDao" class="com.sunzhiyong.base_aop_xml.OrderDao"/>
+    <!--注册方法提供者对象-->
+    <bean id="aop" class="com.sunzhiyong.base_aop_xml.Aop"/>
+
+    <!--spring aop 切面配置-->
+    <aop:config>
+        <aop:pointcut id="qr" expression="execution(* com.sunzhiyong.base_aop_xml.*.*(..))"/>
+        <aop:aspect ref="aop">
+            <aop:before method="begin" pointcut-ref="qr"/>
+            <aop:after method="after" pointcut-ref="qr"/>
+        </aop:aspect>
+
+    </aop:config>
+</beans>
