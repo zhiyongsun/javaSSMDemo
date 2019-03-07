@@ -16,6 +16,11 @@
     <bean id="aop" class="com.sunzhiyong.base_aop_xml.Aop"/>
 
     <!--spring aop 切面配置-->
+    <!--execution(* com.sunzhiyong.base_aop_xml.*.*(..))-->
+    <!--第一个*号，当前方法的返回值，表示所有方法的返回值都要拦截-->
+    <!--com.sunzhiyong.base_aop_xml 拦截这个包-->
+    <!--.* 表示所有子包-->
+    <!--.* 表示所有子类-->
     <aop:config>
         <aop:pointcut id="qr" expression="execution(* com.sunzhiyong.base_aop_xml.*.*(..))"/>
         <aop:aspect ref="aop">
